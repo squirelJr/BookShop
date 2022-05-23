@@ -69,11 +69,8 @@ function getBooks() {
       })
   }
   getBooks();
-console.log(books);
-console.log(books[0])
-console.log(books.length)
-console.log(Array.isArray(books));
-for(let i=0;i<books.length;i++){
+let arrayLength=books[0].length;
+for(let i=0;i<arrayLength;i++){
     let card= document.createElement("div");
     card.width="100px";
     card.style.cssText=`boreder: 2px solid black`;
