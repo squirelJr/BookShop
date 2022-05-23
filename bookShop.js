@@ -47,3 +47,39 @@ nav.appendChild(logoAnchor);
 nav.appendChild(search);
 nav.append(navUl);
 document.body.append(nav);
+
+
+//Main 
+
+let main = document.createElement("div");
+main.className="main";
+main.style.cssText=`display:flex; flex-direction:row;align-items:center;justify-content:space-around;width:100%; flex-wrap:wrap;height:80vw;border:2px solid black;`;
+document.body.append(main);
+
+let books =[];
+function getBooks() {
+    return fetch('Books.json')
+      .then(resp=> {
+        return resp.json();
+      })
+      .then(data=> {
+       
+        books.push(data);
+        
+      })
+  }
+  getBooks();
+console.log(books);
+console.log(books[0])
+console.log(books.length)
+console.log(Array.isArray(books));
+for(let i=0;i<books.length;i++){
+    let card= document.createElement("div");
+    card.width="100px";
+    card.style.cssText=`boreder: 2px solid black`;
+    let image = document.createElement("img");
+    image.src=books[i].imageLink;
+    console.log(image);
+    card.appendChild(image);
+    main.appendChild(card);
+}
