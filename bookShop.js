@@ -77,6 +77,9 @@ cartAnchor.addEventListener("click",function(event){
   }
  
 })
+
+
+
 //Main 
 
 let main = document.createElement("div");
@@ -95,14 +98,18 @@ function getBooks() {
           let card= document.createElement("div");
           
           card.style.cssText=` display:flex;flex-direction:column;width:20%;`;
+          card.draggable=true;
           let image = document.createElement("img");
           let bookContent = document.createElement("div");
           bookContent.className="bookContent"
           bookContent.style.cssText=`width:200px;height:100px;display:flex;justify-content:space-around;align-items:space-around;flex-direction:column;`
           image.src=data[i].imageLink;
-          card.className=`book${i+1}`
+          card.className=`book${i+1}`;
+
+          card.id=`book${i+1}`;
           image.style.cssText=`width:150px;height:200px;`
           console.log(image);
+         
          let title= document.createElement("h5")
          title.className="bookTitle";
          title.style.margin="5px 0px 0px 0px"
@@ -119,31 +126,35 @@ function getBooks() {
           card.appendChild(image);
           card.appendChild(bookContent);
           main.appendChild(card);
-          let button = document.createElement("button");
-          button.className="btn-buy";
-          button.innerText="ADD TO CART"
-          button.style.cssText=`width:150px;height:50px;background-color:white;color:green;border:1px solid green;box-shadow: 4px 5px 6px 6px #ccc;`
-          
+         
+          let addCart = document.createElement("button");
+          addCart.className="btn-buy";
+          addCart.innerText="ADD TO CART"
+          addCart.style.cssText=`width:150px;height:50px;background-color:white;color:green;border:1px solid green;box-shadow: 4px 5px 6px 6px #ccc;`
+         
           image.addEventListener("mouseover",function(event){image.style.boxShadow ="rgb(150 150 150) 4px 3px 6px 6px";
           image.style.position="relative";
           bookContent.innerHTML="";
-          bookContent.append(button);
+          bookContent.append(addCart);
         });
           image.addEventListener("mouseleave", function(event){image.style.boxShadow ="none"; 
           bookContent.style.display="flex";
-          bookContent.removeChild(button);
+          bookContent.removeChild(addCart);
           bookContent.append(author,title,price);
         });
-
+       
+       
           image.addEventListener("click",function(event){
             added.innerText="";
             ++boughtAmount;
-            bookContent.removeChild(button);
+            bookContent.removeChild(addCart);
             bookContent.append(author,title,price);
             added.append(boughtAmount);
            let classnames= image.parentElement.getAttribute("class");
            booksInCart.push(classnames);
-           
+          
+          
+
            booksInCart.forEach(x =>
              {
                let a= document.getElementsByClassName(x).item(0);
@@ -155,13 +166,34 @@ function getBooks() {
              },
              modal.innerHTML=""
            );
-          
+           let confirm =document.createElement("button");
+           confirm.innerText="Confirm Order";
+           confirm.style.cssText=`margin-bottom:20px;height:30px;font-weight:900;`;
+           confirm.addEventListener('mouseover',event=>{
+            confirm.style.cssText=`background-color:grey;color:white;margin-bottom:20px;height:30px;font-weight:900;cursor:pointer;`
+           })
+           confirm.addEventListener('mouseleave',event=>{
+            confirm.style.cssText=`margin-bottom:20px;height:30px;font-weight:900;`;
+           })
+           modal.prepend(confirm);
+           let form=document.createElement("a");
+           form.className="formPage";
+           form.href="./form.html"
+           confirm.append(form);
+           confirm.addEventListener('click',event=>{
+             window.location.href="./form.html"
+           })
             console.log(booksInCart);
-
+         
           })
           
+          
       }
+    
       })
+     
   }
+  
   getBooks();
- 
+  
+  
