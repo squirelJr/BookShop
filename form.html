@@ -23,14 +23,14 @@
         <h1>Billing Address</h1>
         <div class="name">
             <label for="name">First Name</label>
-            <input type="text" placeholder="First Name">  
+            <input type="text" required placeholder="First Name">  
         </div>
         <div class="lastName">
-            <label for="lastName">First lastName</label>
-            <input type="text" placeholder="lastName">  
+            <label for="lastName">lastName</label>
+            <input type="text" required placeholder="lastName">  
         </div>
         <div class="date">
-            <label for="date">First Name</label>
+            <label for="date">Date Of Birth</label>
             <input type="date" placeholder="mm/dd/yyyy">  
         </div>
         <div class="address">
@@ -42,26 +42,26 @@
         <h2>Payment Method</h2>
         <div class="method">
     
-            <input type="radio" value="card">Credit Card</input>
-            <input type="radio" value="cash">Cash</input>
+            <input type="radio" id="card"value="card">Credit Card</input>
+            <input type="radio" id="cash" value="cash">Cash</input>
         </div>
-        <div class="gifts">
+        <div class="gifts" id="gift-container">
             <h2>Choose 2 Gifts</h2>
             <div>
                 <label for="Pack">Pack As a Gift</label>
-                <input type="checkBox" name="Pack" id="Pack">
+                <input type="checkBox" name="Pack" class="gift" id="Pack">
             </div>
             <div>
                 <label for="postCard">Add PostCard</label>
-                <input type="checkBox" name="postCard" id="postCard">
+                <input type="checkBox" name="postCard" class="gift" id="postCard">
             </div>
             <div>
                 <label for="discount">Provide 2% discount to the next time</label>
-                <input type="checkBox" name="discount" id="discount">
+                <input type="checkBox" name="discount" class="gift" id="discount">
             </div>
             <div>
                 <label for="Branded">Branded pen or pencil</label>
-                <input type="checkBox" name="Branded" id="Branded">
+                <input type="checkBox" name="Branded" class="gift" id="Branded">
             </div>
           
         </div>
@@ -74,3 +74,4 @@
     </body>
     
     </html>
+    <script src="./form.js"></script>
