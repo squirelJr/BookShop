@@ -64,4 +64,46 @@ card.addEventListener("click", function (event) {
     
 }
 
-   
+let FirstName=document.forms["form"]["name"].value;
+let lastName =document.forms["form"]["lastName"].value;
+let deliveryDate =document.forms["form"]["deliveryDate"].value;
+var formdata=new FormData();
+ formdata.append("name",FirstName);
+ formdata.append("lastName",lastName);
+ formdata.append("deliveryDate",deliveryDate);
+
+ let form =document.getElementsByTagName("form");
+ let button= document.getElementsByTagName("button");
+
+
+
+
+  
+
+
+function validateForm(){
+  let First = document.forms["form"]["name"].value ;
+  let lastName =document.forms["form"]["lastName"].value;
+  let date =document.forms["form"]["deliveryDate"].value;
+  let now =new Date;
+  if (First ==" " || First.length<2){
+    document.getElementById("name").style.border="2px solid red";
+   //return false;
+ 
+  }
+    if (lastName=="" || lastName.length<2){
+     
+      document.getElementById("lastName").style.border="2px solid red";
+     // return false;
+    }
+
+ 
+  if (date<now.getDate() ){
+    
+    document.getElementById("deliveryDate").style.border="2px solid red";
+   //return false;
+
+  }
+
+};
+button.addEventListener('click',e=>{ validateForm()})

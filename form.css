@@ -1,9 +1,10 @@
-main{
+main, form {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     background-color: antiquewhite;
     height: 70vh;
+    width: 100%;
 }
 header{
     display: flex;
